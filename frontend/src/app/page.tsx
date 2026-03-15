@@ -35,8 +35,8 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const [analyticsRes, featuresRes] = await Promise.all([
-          axios.get((process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8080") + "/analytics"),
-          axios.get((process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8080") + "/feature_importance")
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8080"}/analytics`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8080"}/feature_importance`)
         ]);
         setAnalytics(analyticsRes.data);
         setFeatures(featuresRes.data);
@@ -51,7 +51,7 @@ export default function Dashboard() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post((process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8080") + "/predict", formData);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8080"}/predict`, formData);
       setPredictionResult(response.data);
     } catch (err: any) {
       alert("Prediction Failed");
