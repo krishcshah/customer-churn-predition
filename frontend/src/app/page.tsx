@@ -92,10 +92,10 @@ export default function Dashboard() {
             
             <header>
               <h2 className="text-3xl font-bold text-neutral-800 tracking-tight">Analytics & Insights</h2>
-              <p className="text-neutral-500 mt-1">Comprehensive view of churn drivers across {analytics ? analytics.total_customers.toLocaleString() : '...'} historical profiles.</p>
+              <p className="text-neutral-500 mt-1">Comprehensive view of churn drivers across {analytics?.total_customers ? analytics.total_customers.toLocaleString() : '...'} historical profiles.</p>
             </header>
 
-            {analytics && (
+            {analytics && analytics.total_customers && (
               <>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   
