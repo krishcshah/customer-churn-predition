@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -129,7 +129,7 @@ export default function Dashboard() {
                           <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                           <XAxis dataKey="calls" />
                           <YAxis tickFormatter={(val) => `${(val * 100).toFixed(0)}%`} />
-                          <Tooltip formatter={(val: number) => `${(val * 100).toFixed(1)}%`} labelFormatter={(val) => `Support Calls: ${val}`} />
+                          <Tooltip formatter={(val: any) => `${(val * 100).toFixed(1)}%`} labelFormatter={(val) => `Support Calls: ${val}`} />
                           <Area type="monotone" dataKey="churn_rate" stroke="#4f46e5" fill="#c7d2fe" />
                         </AreaChart>
                       </ResponsiveContainer>
@@ -146,7 +146,7 @@ export default function Dashboard() {
                           <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                           <XAxis dataKey="delay" />
                           <YAxis tickFormatter={(val) => `${(val * 100).toFixed(0)}%`} />
-                          <Tooltip formatter={(val: number) => `${(val * 100).toFixed(1)}%`} labelFormatter={(val) => `Days Delayed: ${val}`} />
+                          <Tooltip formatter={(val: any) => `${(val * 100).toFixed(1)}%`} labelFormatter={(val) => `Days Delayed: ${val}`} />
                           <Line type="monotone" dataKey="churn_rate" stroke="#ef4444" strokeWidth={3} />
                         </LineChart>
                       </ResponsiveContainer>
@@ -163,7 +163,7 @@ export default function Dashboard() {
                           <CartesianGrid strokeDasharray="3 3" opacity={0.2}/>
                           <XAxis dataKey="category" />
                           <YAxis tickFormatter={(val) => `${(val * 100).toFixed(0)}%`} />
-                          <Tooltip formatter={(val: number) => `${(val * 100).toFixed(1)}%`} />
+                          <Tooltip formatter={(val: any) => `${(val * 100).toFixed(1)}%`} />
                           <Bar dataKey="churn_rate" fill="#10b981" radius={[4,4,0,0]} />
                         </BarChart>
                       </ResponsiveContainer>
