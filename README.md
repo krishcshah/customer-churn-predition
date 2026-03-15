@@ -27,28 +27,3 @@ It is split into three main parts:
 ## Notes on the Data
 
 The current model is trained on a synthetic dataset from Kaggle. Users should note that this specific dataset contains some hardcoded mathematical rules (for example, all users over age 50 or on monthly contracts are automatically set to churn). The model learned these rules perfectly, which is mathematically correct but means some prediction inputs will always return extremely strict results.
-
-## Deployment Instructions
-
-### Deploying the Backend on Render
-1. Create an account on Render.com and connect your GitHub repository.
-2. Click "New +" and select "Web Service".
-3. Select this repository from your connected GitHub account.
-4. Fill in the following specific deployment details:
-   * **Root Directory:** backend
-   * **Environment:** Python 3
-   * **Build Command:** pip install -r requirements.txt
-   * **Start Command:** uvicorn main:app --host 0.0.0.0 --port 10000
-5. You will need to create a equirements.txt file inside your ackend/ folder before doing this. It should contain astapi, uvicorn, pydantic, pandas, joblib, and xgboost.
-6. Note: Render will need access to the src/ and models/ directories since the backend depends on them. You might need to move main.py to the root folder or adjust your import paths (sys.path.append) to ensure the Python environment finds the pickled model in a production state.
-7. Click "Create Web Service". Render will provide you with a live URL (e.g., https://your-backend-app.onrender.com).
-
-### Deploying the Frontend on Vercel
-1. Create an account on Vercel.com and connect your GitHub repository.
-2. Click "Add New..." and select "Project".
-3. Import your designated repository.
-4. In the configuration settings, modify the following:
-   * **Framework Preset:** Next.js
-   * **Root Directory:** rontend
-5. Open your frontend source code (specifically rontend/src/app/page.tsx) and replace all instances of http://127.0.0.1:8080 with the live URL you received from Render in the previous step.
-6. Click "Deploy". Vercel will automatically build the Next.js application and provide a live URL.
