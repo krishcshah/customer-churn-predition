@@ -2,16 +2,16 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { 
-  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend,
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend,
   LineChart, Line, AreaChart, Area
 } from "recharts";
-import { Activity, Users, UserX, LineChart as LineChartIcon, RefreshCw, Layers } from "lucide-react";
+import { Activity, Users, UserX, LineChart as LineChartIcon, RefreshCw, Layers, X, Info } from "lucide-react";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [predictionResult, setPredictionResult] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showWakeupToast, setShowWakeupToast] = useState(true);
 
   // States
   const [analytics, setAnalytics] = useState<any>(null);
@@ -295,6 +295,29 @@ export default function Dashboard() {
           </div>
         )}
       </main>
+
+      {/* Wake-up Toast Notification */}
+      {showWakeupToast && (
+        <div className="fixed bottom-6 right-6 z-50 max-w-sm bg-white border border-neutral-200 shadow-xl rounded-2xl p-4 animate-in slide-in-from-bottom-5">
+          <div className="flex items-start gap-3">
+            <div className="pt-0.5">
+              <Info className="w-5 h-5 text-indigo-500" />
+            </div>
+            <div className="flex-1">
+              <h4 className="text-sm font-semibold text-neutral-800">Server Wake-up Time</h4>
+              <p className="text-xs text-neutral-500 mt-1 leading-relaxed">
+                After long periods of inactivity on this project demo, the backend ML model running on the server can take up to 50 seconds to fire up and send data again.
+              </p>
+            </div>
+            <button 
+              onClick={() => setShowWakeupToast(false)}
+              className="text-neutral-400 hover:text-neutral-600 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
